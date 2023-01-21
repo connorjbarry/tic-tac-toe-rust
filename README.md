@@ -14,22 +14,12 @@ To play the game, run the following command:
 cargo run
 ```
 
-## How to test
+## How to run test suite
 
 To run the tests, run the following command:
 
 ```bash
 
 cargo test
-
-```
-
-## How to build
-
-To build the game, run the following command:
-
-```bash
-
-cargo build
 
 ```
