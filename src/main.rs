@@ -28,3 +28,48 @@ fn main() {
     }
     println!("Player {} wins!", board.winner);
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_new_board() {
+        let board: Board = Board::new();
+        assert_eq!(board.board, [[' '; 3]; 3]);
+        assert_eq!(board.turn, 'X');
+        assert_eq!(board.winner, ' ');
+        assert_eq!(board.game_over, false);
+    }
+
+    #[test]
+    fn test_make_move() {
+        let mut board: Board = Board::new();
+        board.make_move(0, 0);
+        assert_eq!(board.board[0][0], 'X');
+        assert_eq!(board.turn, 'O');
+        assert_eq!(board.winner, ' ');
+        assert_eq!(board.game_over, false);
+    }
+
+    #[test]
+    fn test_change_turn() {
+        let mut board: Board = Board::new();
+        board.change_turn();
+        assert_eq!(board.board, [[' '; 3]; 3]);
+        assert_eq!(board.turn, 'O');
+        assert_eq!(board.winner, ' ');
+        assert_eq!(board.game_over, false);
+    }
+
+    #[test]
+    fn test_check_winner() {
+        let mut board: Board = Board::new();
+        board.board = [['X'; 3]; 3];
+        board.check_winner();
+        assert_eq!(board.board, [['X'; 3]; 3]);
+        assert_eq!(board.turn, 'X');
+        assert_eq!(board.winner, 'X');
+        assert_eq!(board.game_over, true);
+    }
+}

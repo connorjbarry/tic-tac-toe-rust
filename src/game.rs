@@ -1,8 +1,8 @@
 pub struct Board {
-    board: [[char; 3]; 3],
+    pub board: [[char; 3]; 3],
     pub turn: char,
     pub winner: char,
-    game_over: bool,
+    pub game_over: bool,
 }
 
 impl Board {
