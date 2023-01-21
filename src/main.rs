@@ -7,24 +7,22 @@ fn game_flow(board: &mut Board, row: usize, col: usize) {
     board.print_board();
 }
 
-fn main() {
-    let mut board: Board = Board::new();
+fn prompt_user_for_move(board: &mut Board) {
     println!("Player {}, please enter the position of your move: ", board.turn);
     let mut move_made = String::new();
     io::stdin().read_line(&mut move_made).unwrap();
     let mut move_made = move_made.split_whitespace();
     let row: usize = move_made.next().unwrap().parse().unwrap();
     let col: usize = move_made.next().unwrap().parse().unwrap();
-    game_flow(&mut board, row, col);
+    game_flow(board, row, col);
+}
+
+fn main() {
+    let mut board: Board = Board::new();
+    prompt_user_for_move(&mut board);
 
     while !board.is_winner() {
-        println!("Player {}, please enter the position of your move: ", board.turn);
-        let mut move_made = String::new();
-        io::stdin().read_line(&mut move_made).unwrap();
-        let mut move_made = move_made.split_whitespace();
-        let row: usize = move_made.next().unwrap().parse().unwrap();
-        let col: usize = move_made.next().unwrap().parse().unwrap();
-        game_flow(&mut board, row, col);    
+        prompt_user_for_move(&mut board);
     }
     println!("Player {} wins!", board.winner);
 }
