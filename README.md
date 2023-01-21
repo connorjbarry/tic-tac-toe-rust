@@ -2,8 +2,10 @@
 
 # Tic Tac Toe
 
-This is a simple tic tac toe game written in rust.
+A simple tic tac toe game written in rust.
+
 The game is played on the command line.
+
 Potential to add a GUI in the future.
 
 ## How to play
@@ -16,7 +18,7 @@ cargo run
 
 ## How to run test suite
 
-To run the tests, run the following command:
+To run the test suite, run the following command:
 
 ```bash
 
